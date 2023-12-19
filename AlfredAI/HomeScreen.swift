@@ -8,34 +8,21 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    @State private var isSpeaking = false
+
     var body: some View {
         ZStack {
             Color("AlfredDarkGray")
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
-                // Top icons
-                HStack {
-                    CircleIcon(iconName: "HistoryIcon", iconSize: 50)
-                    Spacer()
-                    CircleIcon(iconName: "SettingsIcon", iconSize: 50)
-                }
-                .padding(.horizontal)
-                
+                TopIcons()
                 Spacer(minLength: 20)
-
-                // Giant circle
-                Circle()
-                    .stroke(Color("AlfredGold"), lineWidth: 4)
-                    .frame(width: 250, height: 250)
-
+                AlfredView(isSpeaking: $isSpeaking)
                 Spacer()
-                // Rounded Rectangle
-                RoundedRectangle(cornerRadius: 25)
-                    .stroke(Color("AlfredSilver"), lineWidth: 2)
-                    .frame(width: 300, height: 100)
-
+                TextBox(text: "Hello, I'm Alfred. How may I be of assistance?")
                 Spacer()
+                CircleIcon(iconName: "ReplayIcon", iconSize: 50)
             }
         }
     }
@@ -45,5 +32,16 @@ struct HomeScreen: View {
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
+    }
+}
+
+struct TopIcons: View {
+    var body: some View {
+        HStack {
+            CircleIcon(iconName: "HistoryIcon", iconSize: 50)
+            Spacer()
+            CircleIcon(iconName: "SettingsIcon", iconSize: 50)
+        }
+        .padding(.horizontal)
     }
 }
