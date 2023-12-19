@@ -10,15 +10,26 @@ import SwiftUI
 struct LoadingScreen: View {
     var body: some View {
         ZStack {
-            Color.black.opacity(0.7) // Dark overlay background
+            Color("AlfredDarkBlue")
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
-                Text("Loading...")
-                    .font(.title2)
-                    .fontWeight(.medium)
+                Spacer()
+                Image("Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 500, height: 500)
+
+                Text("Alfred Ai")
+                    .font(.custom("Roboto-ExtraBold", size: 60))
                     .foregroundColor(.white)
-                    .padding(.top, 8)
+
+                Spacer()
+
+                Text("© Sush Mullur")
+                    .font(.caption)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 8)
             }
         }
     }

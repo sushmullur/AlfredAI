@@ -8,17 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isLoading = true // State variable to control the display of the loading screen
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        // Use a Group to conditionally show views
+        Group {
+            if isLoading {
+                LoadingScreen()
+                    .onAppear {
+                        // Simulate a loading process, then switch to the HomeScreen
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                            isLoading = false
+                        }
+                    }
+            } else {
+                HomeScreen() // Transition to the HomeScreen after loading
+            }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+// MARK: - Preview
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

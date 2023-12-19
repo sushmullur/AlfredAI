@@ -12,6 +12,8 @@
 		1F27C5F82B2FF6640087E30A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F27C5F72B2FF6640087E30A /* Assets.xcassets */; };
 		1F27C5FC2B2FF6640087E30A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F27C5FB2B2FF6640087E30A /* Preview Assets.xcassets */; };
 		1F27C6032B30053C0087E30A /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27C6022B30053C0087E30A /* LoadingScreen.swift */; };
+		1F27C6052B3008330087E30A /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27C6042B3008330087E30A /* HomeScreen.swift */; };
+		1FD643972B31421B00D3B1AF /* CircleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD643962B31421B00D3B1AF /* CircleIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		1F27C5F92B2FF6640087E30A /* AlfredAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AlfredAI.entitlements; sourceTree = "<group>"; };
 		1F27C5FB2B2FF6640087E30A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F27C6022B30053C0087E30A /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		1F27C6042B3008330087E30A /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		1FD643962B31421B00D3B1AF /* CircleIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				1F27C5F92B2FF6640087E30A /* AlfredAI.entitlements */,
 				1F27C5FA2B2FF6640087E30A /* Preview Content */,
 				1F27C6022B30053C0087E30A /* LoadingScreen.swift */,
+				1F27C6042B3008330087E30A /* HomeScreen.swift */,
+				1FD643962B31421B00D3B1AF /* CircleIcon.swift */,
 			);
 			path = AlfredAI;
 			sourceTree = "<group>";
@@ -142,6 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD643972B31421B00D3B1AF /* CircleIcon.swift in Sources */,
+				1F27C6052B3008330087E30A /* HomeScreen.swift in Sources */,
 				1F27C5F62B2FF6630087E30A /* ContentView.swift in Sources */,
 				1F27C5F42B2FF6630087E30A /* AlfredAIApp.swift in Sources */,
 				1F27C6032B30053C0087E30A /* LoadingScreen.swift in Sources */,
