@@ -14,6 +14,8 @@
 		1F27C6032B30053C0087E30A /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27C6022B30053C0087E30A /* LoadingScreen.swift */; };
 		1F27C6052B3008330087E30A /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27C6042B3008330087E30A /* HomeScreen.swift */; };
 		1F35DB162B337041003FA905 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35DB152B337041003FA905 /* Query.swift */; };
+		1F35DB182B337735003FA905 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35DB172B337735003FA905 /* MockData.swift */; };
+		1F35DB1A2B3377C0003FA905 /* QueryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35DB192B3377C0003FA905 /* QueryRowView.swift */; };
 		1FD643972B31421B00D3B1AF /* CircleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD643962B31421B00D3B1AF /* CircleIcon.swift */; };
 		1FD643992B314F0700D3B1AF /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD643982B314F0700D3B1AF /* TextBox.swift */; };
 		1FD6439B2B314F3100D3B1AF /* AlfredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6439A2B314F3100D3B1AF /* AlfredView.swift */; };
@@ -30,6 +32,8 @@
 		1F27C6022B30053C0087E30A /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		1F27C6042B3008330087E30A /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		1F35DB152B337041003FA905 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		1F35DB172B337735003FA905 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		1F35DB192B3377C0003FA905 /* QueryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryRowView.swift; sourceTree = "<group>"; };
 		1FD643962B31421B00D3B1AF /* CircleIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIcon.swift; sourceTree = "<group>"; };
 		1FD643982B314F0700D3B1AF /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		1FD6439A2B314F3100D3B1AF /* AlfredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredView.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				1FD6439A2B314F3100D3B1AF /* AlfredView.swift */,
 				1FD6439C2B32396900D3B1AF /* HistoryPage.swift */,
 				1F35DB152B337041003FA905 /* Query.swift */,
+				1F35DB172B337735003FA905 /* MockData.swift */,
+				1F35DB192B3377C0003FA905 /* QueryRowView.swift */,
 			);
 			path = AlfredAI;
 			sourceTree = "<group>";
@@ -160,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F35DB1A2B3377C0003FA905 /* QueryRowView.swift in Sources */,
 				1FD643972B31421B00D3B1AF /* CircleIcon.swift in Sources */,
 				1F35DB162B337041003FA905 /* Query.swift in Sources */,
 				1FD6439B2B314F3100D3B1AF /* AlfredView.swift in Sources */,
@@ -169,6 +176,7 @@
 				1F27C5F42B2FF6630087E30A /* AlfredAIApp.swift in Sources */,
 				1FD643992B314F0700D3B1AF /* TextBox.swift in Sources */,
 				1F27C6032B30053C0087E30A /* LoadingScreen.swift in Sources */,
+				1F35DB182B337735003FA905 /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
