@@ -2,15 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- Microphone usage description -->
-    <key>NSMicrophoneUsageDescription</key>
-    <string>We need access to your microphone to record your voice for voice commands.</string>
-    
-    <!-- Speech recognition usage description -->
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>We use speech recognition to transcribe your voice commands for voice-controlled actions in the app.</string>
-    
-    <!-- Add any other required keys and values for your app -->
-    
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need access to your microphone to record your voice for voice commands.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>We use speech recognition to transcribe your voice commands for voice-controlled actions in the app.</string>
 </dict>
 </plist>

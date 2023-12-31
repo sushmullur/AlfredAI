@@ -4,7 +4,6 @@ struct AlfredView: View {
     @Binding var isSpeaking: Bool
     @Binding var transcribedText: String
     @ObservedObject var audioRecorder = AudioRecorder()
-    @State private var showAlert = false
 
     var body: some View {
         VStack {
@@ -22,19 +21,13 @@ struct AlfredView: View {
                     if isSpeaking {
                         // Start recording when Alfred is tapped
                         audioRecorder.startRecording()
+                        print("Recording started.")
                     } else {
                         // Stop recording when Alfred is tapped again
                         audioRecorder.stopRecording()
-                        showAlert = true // Show the alert
+                        print("Recording stopped.")
                     }
                 }
-                .alert(isPresented: $showAlert) {
-                                    Alert(
-                                        title: Text("Recording Completed"),
-                                        message: Text(audioRecorder.transcribedText), // Display the transcribed text
-                                        dismissButton: .default(Text("OK"))
-                                    )
-                                }
         }
     }
 }

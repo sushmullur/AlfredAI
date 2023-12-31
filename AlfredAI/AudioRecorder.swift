@@ -4,13 +4,9 @@ import Speech
 
 class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDelegate {
     private var captureSession: AVCaptureSession?
-    private var audioOutput: AVCaptureAudioDataOutput?
     private var recordingOutput: AVCaptureMovieFileOutput?
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest? // Add this line
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    private var recognitionTask: SFSpeechRecognitionTask?
-
     @Published var transcribedText = "" // Store the transcribed text here
     
     override init() {
@@ -32,14 +28,6 @@ class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDel
             }
         }
         
-        // Configure audio output (optional)
-        audioOutput = AVCaptureAudioDataOutput()
-        if let audioOutput = audioOutput {
-            if captureSession.canAddOutput(audioOutput) {
-                captureSession.addOutput(audioOutput)
-            }
-        }
-        
         // Configure movie file output for recording
         recordingOutput = AVCaptureMovieFileOutput()
         if let recordingOutput = recordingOutput {
@@ -56,7 +44,7 @@ class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDel
         let outputURL = documentDirectory.appendingPathComponent("userRecording.mov")
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
+        print("Speech recognition request created.")
         recordingOutput.startRecording(to: outputURL, recordingDelegate: self)
     }
     
@@ -66,21 +54,21 @@ class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDel
     }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-            if let error = error {
-                // Handle the error
-                print("Recording error: \(error)")
-            } else {
-                // Handle successful recording
-                print("Recording completed successfully. File URL: \(outputFileURL)")
-            }
+        if let error = error {
+            // Handle the error
+            print("Recording error: \(error)")
+        } else {
+            // Handle successful recording
+            print("Recording completed successfully. File URL: \(outputFileURL)")
         }
-
+    }
+    
     private func setupSpeechRecognition() {
-        speechRecognizer?.delegate = self
         SFSpeechRecognizer.requestAuthorization { authStatus in
             DispatchQueue.main.async {
                 if authStatus == .authorized {
                     // Speech recognition is authorized; you can start recognizing speech
+                    print("Speech recognition authorized")
                 } else {
                     // Handle the case where speech recognition is not authorized
                     print("Speech recognition authorization denied.")
@@ -90,24 +78,25 @@ class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDel
     }
 }
 
-extension AudioRecorder: SFSpeechRecognizerDelegate {
-    // Implement delegate methods if needed
-}
-
 extension AudioRecorder: SFSpeechRecognitionTaskDelegate {
     func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishRecognition recognitionResult: SFSpeechRecognitionResult) {
+        print("Speech recognition task started")
         let transcribedText = recognitionResult.bestTranscription.formattedString
 
         // Publish the transcribed text on the main thread
         DispatchQueue.main.async {
+            print("In the dispatch queue")
             self.transcribedText = transcribedText
         }
+        print("Transcribed text: " + transcribedText)
     }
-
 
     func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishSuccessfully successfully: Bool) {
         if !successfully {
             // Handle recognition failure if needed
+            print("Speech recognition failed")
+        } else {
+            print("Speech was successfully received")
         }
     }
 }
