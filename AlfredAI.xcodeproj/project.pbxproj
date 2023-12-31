@@ -39,6 +39,7 @@
 		1F35DB192B3377C0003FA905 /* QueryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryRowView.swift; sourceTree = "<group>"; };
 		1FAF33D72B40F9360089ED34 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		1FAF33D92B40F9560089ED34 /* UserInputLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputLogger.swift; sourceTree = "<group>"; };
+		1FAF33DB2B40FE450089ED34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1FD643962B31421B00D3B1AF /* CircleIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIcon.swift; sourceTree = "<group>"; };
 		1FD643982B314F0700D3B1AF /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		1FD6439A2B314F3100D3B1AF /* AlfredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredView.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		1F27C5F22B2FF6630087E30A /* AlfredAI */ = {
 			isa = PBXGroup;
 			children = (
+				1FAF33DB2B40FE450089ED34 /* Info.plist */,
 				1F27C5F32B2FF6630087E30A /* AlfredAIApp.swift */,
 				1F27C5F52B2FF6630087E30A /* ContentView.swift */,
 				1F27C5F72B2FF6640087E30A /* Assets.xcassets */,
@@ -322,6 +324,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlfredAI/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -360,6 +363,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlfredAI/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

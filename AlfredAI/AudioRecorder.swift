@@ -1,21 +1,22 @@
-//
-//  AudioRecorder.swift
-//  AlfredAI
-//
-//  Created by Sush Mullur on 12/30/23.
-//
-
 import Foundation
 import AVFoundation
+import Speech
 
 class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDelegate {
     private var captureSession: AVCaptureSession?
     private var audioOutput: AVCaptureAudioDataOutput?
     private var recordingOutput: AVCaptureMovieFileOutput?
     
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+
+    @Published var transcribedText = "" // Store the transcribed text here
+    
     override init() {
         super.init()
         setupCaptureSession()
+        setupSpeechRecognition()
     }
     
     private func setupCaptureSession() {
@@ -54,10 +55,13 @@ class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDel
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let outputURL = documentDirectory.appendingPathComponent("userRecording.mov")
         
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
         recordingOutput.startRecording(to: outputURL, recordingDelegate: self)
     }
     
     func stopRecording() {
+        recognitionRequest?.endAudio()
         recordingOutput?.stopRecording()
     }
     
@@ -70,4 +74,44 @@ class AudioRecorder: NSObject, ObservableObject, AVCaptureFileOutputRecordingDel
                 print("Recording completed successfully. File URL: \(outputFileURL)")
             }
         }
+
+    private func setupSpeechRecognition() {
+        speechRecognizer?.delegate = self
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            DispatchQueue.main.async {
+                if authStatus == .authorized {
+                    // Speech recognition is authorized; you can start recognizing speech
+                } else {
+                    // Handle the case where speech recognition is not authorized
+                    print("Speech recognition authorization denied.")
+                }
+            }
+        }
+    }
+}
+
+extension AudioRecorder: SFSpeechRecognizerDelegate {
+    // Implement delegate methods if needed
+}
+
+extension AudioRecorder: SFSpeechRecognitionTaskDelegate {
+    func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishRecognition recognitionResult: SFSpeechRecognitionResult) {
+        let transcribedText = recognitionResult.bestTranscription.formattedString
+
+        // Publish the transcribed text on the main thread
+        DispatchQueue.main.async {
+            self.transcribedText = transcribedText
+        }
+    }
+
+
+    func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishSuccessfully successfully: Bool) {
+        if !successfully {
+            // Handle recognition failure if needed
+        }
+    }
+}
+
+extension Notification.Name {
+    static let recordingCompletedNotification = Notification.Name("RecordingCompletedNotification")
 }

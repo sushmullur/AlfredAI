@@ -3,6 +3,7 @@ import AVFoundation
 
 struct HomeScreen: View {
     @State private var isSpeaking = false
+    @State private var transcribedText = ""
 
     var body: some View {
         NavigationView {
@@ -13,7 +14,7 @@ struct HomeScreen: View {
                 VStack {
                     TopIcons()
                     Spacer(minLength: 20)
-                    AlfredView(isSpeaking: $isSpeaking)
+                    AlfredView(isSpeaking: $isSpeaking, transcribedText: $transcribedText)
                     Spacer()
                     TextBox(text: "Hello, I'm Alfred. How may I be of assistance?")
                     Spacer()
