@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct HomeScreen: View {
     @State private var isSpeaking = false
@@ -39,8 +40,11 @@ struct TopIcons: View {
             
             Spacer()
 
-            CircleIcon(iconName: "SettingsIcon", iconSize: 50)
+            NavigationLink(destination: SettingsPage()) {
+                CircleIcon(iconName: "SettingsIcon", iconSize: 50)
+            }
         }
         .padding(.horizontal)
     }
 }
+

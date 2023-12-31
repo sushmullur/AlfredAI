@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AlfredView: View {
     @Binding var isSpeaking: Bool
+    @ObservedObject var audioRecorder = AudioRecorder()  // Create an instance of AudioRecorder
 
     var body: some View {
         Circle()
@@ -12,10 +13,19 @@ struct AlfredView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
-                    .onTapGesture {
-                        isSpeaking.toggle()
-                    }
             )
+            .onTapGesture {
+                isSpeaking.toggle()
+                if isSpeaking {
+                    // Start recording when Alfred is tapped
+                    audioRecorder.startRecording()
+                } else {
+                    // Stop recording when Alfred is tapped again
+                    audioRecorder.stopRecording()
+                    // Log the user's input
+                    UserInputLogger.shared.logUserInput("User spoke something") // Replace with actual audio processing
+                }
+            }
     }
 }
 
